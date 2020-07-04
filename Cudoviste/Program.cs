@@ -8,7 +8,9 @@ namespace Cudoviste
         {
             // Cudoviste 
             // https://open.kattis.com/problems/cudoviste 
-            // Map processing (string - mask)
+            // Map processing (string[] - mask)
+            // Time Limit Exceeded 
+            // -------------------------------------------
 
             var parameters = EnterRowCol();
             int row = parameters[0];
@@ -16,21 +18,10 @@ namespace Cudoviste
 
             var map = GetMap(row, col);
 
-
             int[] accumulator = new int[5] { 0, 0, 0, 0, 0 };
-            try
-            {
-                accumulator = GetAccumulator(map, row, col);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + " || " + ex.GetType().ToString());
-            }
+            accumulator = GetAccumulator(map, row, col);
 
-            finally
-            {
-                PrintList(accumulator);
-            }
+            PrintList(accumulator);
         }
         private static int[] GetAccumulator(string[] map, int row, int col)
         {
